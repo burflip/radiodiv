@@ -5,6 +5,9 @@
  * contacto@beebit.es
  */
 /**
+ *
+ * Currently only data-based functionality is working
+ *
  * USAGE:
  * Fields structure:
  * "hidden_field_id":{
@@ -21,22 +24,22 @@
  * data-rd-name="string"
  * data-rd-selected=true // optional, default = false
  * data-rd-value="string"
-
+ * 
  * @type {{fields: {}, config: {background_color_hovered: string, background_color_selected: string, animation: boolean, click_callback: Function}}}
  */
 (function ($) {
     $.radiodiv = function (options) {
-        initRadiodiv(options);
+        $.extend(true, $(this).defaults, options);
+        initRadiodiv($(this).defaults);
     }
-    $.extend(true, $.radiodiv.defaults, options);
 }(jQuery));
 
 
 $.radiodiv.defaults = {
     fields: {},
     config: {
-        background_color_hovered: "indigo lighten-4",
-        background_color_selected: "indigo",
+        background_color_hovered: "radiodiv-hover",
+        background_color_selected: "radiodiv-selected",
         animation: false,
         click_callback:function(){}
     }
@@ -45,15 +48,17 @@ $.radiodiv.defaults = {
 $.radiodiv.hidden_checked = {};
 
 function initRadiodiv(settings) {
-    $.each(settings.fields, function (k, v) {
-        if (v.type == "radio" && typeof v.selected != "string") {
-            throw "Radiodiv: Illogic options. Multiple radio selection on " + k;
-        } else {
-            radioDiv(k, v.selectors, v.type, v.selected, v.values);
-        }
-    });
+    if(settings !== undefined) {
+        $.each(settings.fields, function (k, v) {
+            if (v.type == "radio" && typeof v.selected != "string") {
+                throw "Radiodiv: Illogic options. Multiple radio selection on " + k;
+            } else {
+                radioDiv(k, v.selectors, v.type, v.selected, v.values);
+            }
+        });
+    }
     $.each($(".radiodiv"), function (k, field) {
-        radioDivInline(field);
+        radioDivInline($(field));
     })
 }
 
@@ -89,13 +94,13 @@ function createHiddenIfNotExist(name) {
 }
 
 function addListeners(field, type, name, value) {
-    field.on('click', function () {
+    field.on('click', function (event) {
         if (type == "radio") {
-            radioClick(field, name, value);
+            radioClick(event, name);
         } else {
             checkBoxClick(field, name, value)
         }
-        $.radiodiv.defaults.click_callback.call(field, type, name, value);
+        (typeof $.radiodiv.defaults.click_callback === "function") ? $.radiodiv.defaults.click_callback(field, type, name, value) : null;
     });
 
     field.on("mouseenter", function () {
@@ -108,17 +113,20 @@ function addListeners(field, type, name, value) {
 }
 
 function addSelected(field, name, selected) {
-    if (selected) {
+    if (selected === true) {
         field.addClass("rd-" + name + " " + $.radiodiv.defaults.config.background_color_selected);
     } else {
         field.addClass("rd-" + name);
     }
 }
 
-function radioClick(field, name, value) {
-    $(".rd-" + name).removeClass($.radiodiv.defaults.config.background_color_selected);
+function radioClick(event, name) {
+    var field = $(event.currentTarget);
+
+    $("body").find("[data-rd-name='"+name+"']").removeClass($.radiodiv.defaults.config.background_color_selected);
     field.addClass($.radiodiv.defaults.config.background_color_selected);
-    $($.radiodiv.hidden_checked[name]).val(value);
+    $("#"+name).val(field.data("rd-value"));
+    console.log($("#example").val());
 }
 
 function checkBoxClick(field, name, value) {

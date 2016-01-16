@@ -1,0 +1,23 @@
+/**
+ * Handcrafted with ♥ Beebit Solutions
+ * Real coffee was used in this project development
+ * Licensed under MIT License
+ * contacto@beebit.es
+ */
+
+.radiodiv{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.radiodiv-hover{
+  background-color: #C5CAE9;
+}
+.radiodiv-selected{
+  background-color: #3F51B5 !important;
+  &:hover{
+    background-color: #3F51B5 !important;
+  }
+}

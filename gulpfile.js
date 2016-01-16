@@ -15,7 +15,7 @@ var minifyCss = require('gulp-minify-css');
 gulp.task('scripts', function () {
     return gulp.src('./js/**/*.js')
         .pipe(sourcemaps.init())
-        .pipe(concat('materialid.min.js'))
+        .pipe(concat('radiodiv.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./maps/'))
         .pipe(gulp.dest('./dist/'));
@@ -24,7 +24,7 @@ gulp.task('styles', function () {
     gulp.src('sass/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(concat('materialid.min.css'))
+        .pipe(concat('radiodiv.min.css'))
         .pipe(minifyCss({compatibility: 'ie8'}))
         .pipe(sourcemaps.write('./maps/'))
         .pipe(gulp.dest('./dist/'));
