@@ -1,20 +1,18 @@
 {
-  "name": "materialid",
-  "description": "Form validation made easy for MaterializeCSS",
+  "name": "radiodiv",
+  "description": "JQuery plugin for making radio/checkbox like divs Designed to work with MaterializeCSS",
   "main": "/dist/radiodiv.min.js",
   "authors": [
     "Valentin <valentin@beebit.es>"
   ],
   "license": "MIT",
   "keywords": [
-    "materializecss",
-    "materialize",
     "div",
     "checkbox",
     "radio",
     "select"
   ],
-  "homepage": "https://github.com/burflip/materialid",
+  "homepage": "https://github.com/burflip/radiodiv",
   "moduleType": [
     "globals"
   ],
