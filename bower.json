@@ -1,0 +1,32 @@
+{
+  "name": "materialid",
+  "description": "Form validation made easy for MaterializeCSS",
+  "main": "/dist/radiodiv.min.js",
+  "authors": [
+    "Valentin <valentin@beebit.es>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "materializecss",
+    "materialize",
+    "div",
+    "checkbox",
+    "radio",
+    "select"
+  ],
+  "homepage": "https://github.com/burflip/materialid",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "Materialize": "materialize#~0.97.5"
+  }
+}
