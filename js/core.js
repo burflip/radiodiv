@@ -67,7 +67,7 @@ function radioDiv(name, selectors, type, selected, values) {
     $.each(selectors, function (k, v) {
         var field = $("#" + v);
         addSelected(field, selected, values[v])
-        addListeners(field, type, name, values[v]);
+        addRadioDivListeners(field, type, name, values[v]);
     });
 }
 
@@ -78,7 +78,7 @@ function radioDivInline(field) {
 
     console.log("SELECTED",selected);
     addSelected(field, value, selected)
-    addListeners(field, "radio", name, value);
+    addRadioDivListeners(field, "radio", name, value);
 }
 
 function createHiddenIfNotExist(name) {
@@ -94,7 +94,7 @@ function createHiddenIfNotExist(name) {
     }
 }
 
-function addListeners(field, type, name, value) {
+function addRadioDivListeners(field, type, name, value) {
     field.on('click', function (event) {
         if (type == "radio") {
             radioClick(event, name);
