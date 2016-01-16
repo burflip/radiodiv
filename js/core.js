@@ -73,10 +73,11 @@ function radioDiv(name, selectors, type, selected, values) {
 
 function radioDivInline(field) {
     var name = field.data("rd-name"),
-        selected = ((field.data("rd-selected")) ? field.data("rd-selected") : false),
+        selected = ((field.data("rd-selected") == true) ? true : false),
         value = field.data("rd-value");
 
-    addSelected(field, selected, value)
+    console.log("SELECTED",selected);
+    addSelected(field, value, selected)
     addListeners(field, "radio", name, value);
 }
 
@@ -113,6 +114,7 @@ function addListeners(field, type, name, value) {
 }
 
 function addSelected(field, name, selected) {
+    console.log("SELECTED",selected)
     if (selected === true) {
         field.addClass("rd-" + name + " " + $.radiodiv.defaults.config.background_color_selected);
     } else {
