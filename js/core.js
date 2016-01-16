@@ -24,7 +24,7 @@
  * data-rd-name="string"
  * data-rd-selected=true // optional, default = false
  * data-rd-value="string"
- * 
+ *
  * @type {{fields: {}, config: {background_color_hovered: string, background_color_selected: string, animation: boolean, click_callback: Function}}}
  */
 (function ($) {
