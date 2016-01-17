@@ -29,8 +29,7 @@
  */
 (function ($) {
     $.radiodiv = function (options) {
-        $.extend(true, $(this).defaults, options);
-        initRadiodiv($(this).defaults);
+        initRadiodiv(this.defaults);
     }
 }(jQuery));
 
