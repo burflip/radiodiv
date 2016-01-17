@@ -112,7 +112,6 @@ function addRadioDivListeners(field, type, name, value) {
 }
 
 function addSelected(field, name, selected) {
-    console.log("SELECTED",selected)
     if (selected === true) {
         field.addClass("rd-" + name + " " + $.radiodiv.defaults.config.background_color_selected);
     } else {
