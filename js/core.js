@@ -48,7 +48,7 @@ $.radiodiv.defaults = {
 $.radiodiv.hidden_checked = {};
 
 function initRadiodiv(settings) {
-    if(settings !== undefined) {
+    /**if(settings !== undefined) {
         $.each(settings.fields, function (k, v) {
             if (v.type == "radio" && typeof v.selected != "string") {
                 throw "Radiodiv: Illogic options. Multiple radio selection on " + k;
@@ -56,7 +56,7 @@ function initRadiodiv(settings) {
                 radioDiv(k, v.selectors, v.type, v.selected, v.values);
             }
         });
-    }
+    }*/
     $.each($(".radiodiv"), function (k, field) {
         radioDivInline($(field));
     })
@@ -76,7 +76,6 @@ function radioDivInline(field) {
         selected = ((field.data("rd-selected") == true) ? true : false),
         value = field.data("rd-value");
 
-    console.log("SELECTED",selected);
     addSelected(field, value, selected)
     addRadioDivListeners(field, "radio", name, value);
 }
