@@ -125,7 +125,6 @@ function radioClick(event, name) {
     $("body").find("[data-rd-name='"+name+"']").removeClass($.radiodiv.defaults.config.background_color_selected);
     field.addClass($.radiodiv.defaults.config.background_color_selected);
     $("#"+name).val(field.data("rd-value"));
-    console.log($("#example").val());
 }
 
 function checkBoxClick(field, name, value) {
